@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function HeaderHome(props) {
   return (
@@ -20,14 +21,14 @@ export default function HeaderHome(props) {
       <div className="collapse navbar-collapse" id="collapsibleNavId">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
+            <NavLink className="nav-link" to="/home">
               Home <span className="sr-only">(current)</span>
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Link
-            </a>
+            <NavLink className="nav-link" to="/antd">
+              AntD
+            </NavLink>
           </li>
           <li className="nav-item dropdown">
             <a

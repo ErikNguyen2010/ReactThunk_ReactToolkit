@@ -6,7 +6,7 @@ export default function LoginTemplate(props) {
   return <Route exact path={props.path} render={(propsRoute) =>{
     return <div>
         <HeaderHome/>
-        <props.component/>
+        <props.component {...propsRoute}/>
     </div>
   }}/>
 }
