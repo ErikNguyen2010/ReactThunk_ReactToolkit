@@ -14,26 +14,62 @@ a{
 }
 
 
+$color-primary: #2a73dd;
+$color-shadow: #e2ebfc;
+$color-warning: #f9d412;
+$color-1-bg: #000;
+$color-2-bg:  #f5f9fe;
+
+$text-xs: 14px;
+$text-base: 16px;
+$text-md:18px;
+$text-xl:20px;
+$text-2xl:30px;
+$text-3xl:40px;
+$text-4xl:50px;
+$text-6xl:70px;
+
+$fw-light:300;
+$fw-regular:400;
+$fw-bold: bold;
+$box-shadow: 0 3px 6px $color-shadow;
+
+@mixin render-text($fs, $fw, $c){
+    font-size: $fs;
+    font-weight: $fw;
+    color: $c;
+}
+
+@mixin box($br, $fs){
+    border-radius: $br;
+    font-size: $fs;
+    cursor: pointer;
+}
+
 header{
+    padding: 15px;
+    background-color: $color-2-bg;
+    box-shadow: 0 2px 4px $color-shadow;
+    z-index: 10;
     .container{
         display: flex;
         justify-content: space-between;
         .logo{
-            color: #2a73dd;
-            font-size: 30px;
-            font-weight: bold;
+            color: $color-primary;
+            font-size: $text-2xl;
+            font-weight: $fw-bold;
         }
         .navbar{
            a{
                margin: 15px;
-               font-size: 16px;
-               color: #000;
+               font-size: $text-base;
+               color: $color-1-bg;
                position: relative;
                transform: scaleX(0);
                &:hover{
-                   transition: all  0.5s;
-                   color: #2a73dd;
+                   color:  $color-primary;
                    &::after{
+                       transition: all  0.5s;
                        transform: scaleX(1);
                    }
 
@@ -41,7 +77,7 @@ header{
                 &::after{
                     content: "";
                     width: 100%;
-                    background-color: #2a73dd;
+                    background-color:  $color-primary;
                     height: 3px;
                     display: block;
                     position: absolute;
@@ -50,6 +86,142 @@ header{
                     transform: scaleX(0);
                 }
            }
+        }
+    }
+}
+
+.carousel{
+    background-image: url(../image/product-header-bg.jpg);
+    background-size: cover;
+    background-position: center bottom;
+    padding: 225px 0;
+    height: 344vh;
+    .row{
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        min-height: 800px;
+        align-items: center;
+        max-width: 1280px;
+        .col-6{
+            width: 50%;
+            div{
+                h1{
+                    @include render-text($text-6xl,$fw-bold ,$color-primary);
+                   
+                }
+                h3{
+                    font-size: $text-xl;
+                    font-weight: $fw-regular;
+                }
+                p{
+                    font-size: $text-base;
+                    
+                }
+                .btn-info{
+                    background-color: #fff;
+                    padding: 13.5px 44px;
+                    color: $color-primary;
+                    box-shadow: $box-shadow;
+                   
+                    border: 2px solid $color-primary;
+                    @include box(8px, $text-xs);
+                    transition: all 0.5s;
+                    margin-right: 10px;
+                    &:hover{
+                        color: #fff;
+                        background-color: $color-primary;
+                        border-color: $color-primary;
+                    }
+                    i{
+                      font-size: $text-xs;
+                      margin-right: 5px;  
+                    }
+                }
+                .btn-shop{
+                    box-shadow: $box-shadow;
+                    @include box(8px, $text-xs);
+                    background: linear-gradient(120deg, #60a4f4, #2a73dd);
+                    padding: 15.5px 46px;
+                    border: none;
+                    color: #fff;
+                    transition: all 0.5s;
+                    &:hover{
+                        opacity: 0.75;
+                    }
+                    i{
+                      font-size: $text-xs;
+                      margin-right: 5px;  
+                    }
+                }
+            }
+            .img-phone{
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+.product-list{
+    h2{
+        text-align: center;
+        @include render-text($text-3xl,$fw-bold, $color-primary)
+    }
+    .row{
+        display: flex;
+        .col{
+            width: calc(100% / 3);
+            .card{
+                box-shadow: 6px 6px 12px #e2ebfc ;
+                padding: 30px;
+                margin-bottom: 30px;
+                img{
+                    width: 100%;
+                }
+                .card-body{
+                    .product-info{
+                        display: flex;
+                        justify-content: space-between;
+                        .product-name{
+                            @include render-text($text-base, $fw-bold , #000 );
+                            .desc{
+                            @include render-text($text-base, $fw-light , #000 );
+                            }
+                        }
+                        .prod-price{
+                            @include render-text($text-base, $fw-bold , #000 );
+                        }
+                    }
+                    .product-ratting{
+                        display: flex;
+                        justify-content: space-between;
+
+                        .ratting{
+                            i{
+                                color: $color-warning;
+                            }
+                        }
+                        .product-button{
+                            .btn-buy{
+                                background: #f5f9fe;
+                                padding: 8px 20px;
+                                border: none;
+                                border-radius: 4px;
+                                letter-spacing: 0.03rem;
+                                font-size: 10px;
+                                font-weight: 600;
+                                color: #2a73dd;
+                                box-shadow: 2px 2px 4px #e2ebfc, -2px -2px 4px #fff;
+                                transition: .5s;
+                                i{
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
