@@ -170,12 +170,24 @@ header{
     }
     .row{
         display: flex;
+        flex-wrap: wrap;
         .col{
             width: calc(100% / 3);
+            @for $i from 1 to 6 {
+                .card-item#{$i + 1} {
+                    animation-name: fadeInDown;
+                    animation-duration: 1s * ($i + 1);
+                }
+            }
+            @media screen and (max-width:768px) {
+                width: 100%;
+            }
             .card{
+                
                 box-shadow: 6px 6px 12px #e2ebfc ;
                 padding: 30px;
                 margin-bottom: 30px;
+                overflow-y: hidden;
                 img{
                     width: 100%;
                 }
@@ -223,5 +235,15 @@ header{
                 }
             }
         }
+    }
+}
+@keyframes fadeInDown {
+    from{
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
     }
 }
